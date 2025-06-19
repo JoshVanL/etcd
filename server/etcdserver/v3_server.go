@@ -19,6 +19,7 @@ import (
 	"context"
 	"encoding/base64"
 	"encoding/binary"
+	"fmt"
 	"strconv"
 	"time"
 
@@ -50,6 +51,12 @@ const (
 	// lease related operations, such as LeaseRenew and LeaseTimeToLive.
 	applyTimeout = time.Second
 )
+
+func init() {
+	fmt.Printf(">>>DIAGRID FORK>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>\n")
+	fmt.Printf(">>>USING maxGapBetweenApplyAndCommitIndex = %d\n", maxGapBetweenApplyAndCommitIndex)
+	fmt.Printf(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>\n")
+}
 
 type RaftKV interface {
 	Range(ctx context.Context, r *pb.RangeRequest) (*pb.RangeResponse, error)
